@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Kanban.Api.DAL.DataContext;
 
 namespace Kanban.WebApi
 {
@@ -24,6 +25,7 @@ namespace Kanban.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<KanbanDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
