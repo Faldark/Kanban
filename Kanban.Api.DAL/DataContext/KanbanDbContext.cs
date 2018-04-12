@@ -9,11 +9,11 @@ namespace Kanban.Api.DAL.DataContext
     public class KanbanDbContext : DbContext
     {
         public DbSet<Card> Cards { get; set; }
-        public DbSet<CardList> CardLists { get; set; }
+        public DbSet<Board> Boards { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=FALDARK-PC\\SQLEXPRESS;Database=kanban;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=FALDARK-PC\\SQLEXPRESS;Database=Kanban;Trusted_Connection=True;");
         }
     }
 }

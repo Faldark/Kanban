@@ -3,11 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kanban.Api.Contracts.Entities
+namespace Kanban.Api.Contracts.DTO
 {
-    public class CardList: BaseEntity<int>
+    public class BoardDTO: BaseEntity<long>
     {
         public string Title { get; set; }
-        public ICollection<Card> Cards { get; set; }
     }
 }

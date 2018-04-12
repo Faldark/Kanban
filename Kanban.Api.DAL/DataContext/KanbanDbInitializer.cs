@@ -17,26 +17,26 @@ namespace Kanban.Api.DAL.DataContext
 
         public async Task Seed()
         {
-            if (!_context.CardLists.Any())
+            if (!_context.Boards.Any())
             {
-                _context.CardLists.Add(new CardList
+                _context.Boards.Add(new Board
                 {
                     Cards = new List<Card>(),
                     Title = "Backlog"
                 });
 
-                _context.CardLists.Add(new CardList
+                _context.Boards.Add(new Board
                 {
                     Cards = new List<Card>(),
                     Title = "Selected for Development"
                 });
 
-                _context.CardLists.Add(new CardList
+                _context.Boards.Add(new Board
                 {
                     Cards = new List<Card>(),
                     Title = "In Progress"
                 });
-                _context.CardLists.Add(new CardList
+                _context.Boards.Add(new Board
                 {
                     Cards = new List<Card>(),
                     Title = "Done"

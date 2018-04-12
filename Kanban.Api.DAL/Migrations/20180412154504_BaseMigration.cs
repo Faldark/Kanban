@@ -10,43 +10,44 @@ namespace Kanban.Api.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CardLists",
+                name: "Boards",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CardLists", x => x.Id);
+                    table.PrimaryKey("PK_Boards", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Cards",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CardListId = table.Column<int>(nullable: true),
+                    BoardId = table.Column<long>(nullable: true),
                     Description = table.Column<string>(nullable: true),
+                    Position = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cards", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cards_CardLists_CardListId",
-                        column: x => x.CardListId,
-                        principalTable: "CardLists",
+                        name: "FK_Cards_Boards_BoardId",
+                        column: x => x.BoardId,
+                        principalTable: "Boards",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cards_CardListId",
+                name: "IX_Cards_BoardId",
                 table: "Cards",
-                column: "CardListId");
+                column: "BoardId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -55,7 +56,7 @@ namespace Kanban.Api.DAL.Migrations
                 name: "Cards");
 
             migrationBuilder.DropTable(
-                name: "CardLists");
+                name: "Boards");
         }
     }
 }

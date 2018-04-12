@@ -11,8 +11,8 @@ using System;
 namespace Kanban.Api.DAL.Migrations
 {
     [DbContext(typeof(KanbanDbContext))]
-    [Migration("20180406192719_SeedMigration")]
-    partial class SeedMigration
+    [Migration("20180412154504_BaseMigration")]
+    partial class BaseMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,41 +21,43 @@ namespace Kanban.Api.DAL.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Kanban.Api.Contracts.Entities.Card", b =>
+            modelBuilder.Entity("Kanban.Api.Contracts.Entities.Board", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("CardListId");
-
-                    b.Property<string>("Description");
 
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CardListId");
+                    b.ToTable("Boards");
+                });
+
+            modelBuilder.Entity("Kanban.Api.Contracts.Entities.Card", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long?>("BoardId");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("Position");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BoardId");
 
                     b.ToTable("Cards");
                 });
 
-            modelBuilder.Entity("Kanban.Api.Contracts.Entities.CardList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CardLists");
-                });
-
             modelBuilder.Entity("Kanban.Api.Contracts.Entities.Card", b =>
                 {
-                    b.HasOne("Kanban.Api.Contracts.Entities.CardList", "CardList")
+                    b.HasOne("Kanban.Api.Contracts.Entities.Board", "Board")
                         .WithMany("Cards")
-                        .HasForeignKey("CardListId");
+                        .HasForeignKey("BoardId");
                 });
 #pragma warning restore 612, 618
         }

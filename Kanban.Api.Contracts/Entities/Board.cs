@@ -5,11 +5,9 @@ using System.Text;
 
 namespace Kanban.Api.Contracts.Entities
 {
-    public class Card : BaseEntity<long>
+    public class Board: BaseEntity<long>
     {
         public string Title { get; set; }
-        public string Description { get; set; }
-        public int Position { get; set; }
-        public Board Board { get; set; }
+        public ICollection<Card> Cards { get; set; }
     }
 }
