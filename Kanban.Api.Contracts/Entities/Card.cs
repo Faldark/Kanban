@@ -11,5 +11,6 @@ namespace Kanban.Api.Contracts.Entities
         public string Description { get; set; }
         public int Order { get; set; }
         public Board Board { get; set; }
+        public Status Status { get; set; }
     }
 }
