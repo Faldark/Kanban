@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Kanban.Api.DAL.DataContext;
 using Kanban.Api.Common.Classes;
+using Kanban.Api.Contracts.Interfaces.Services;
+using Kanban.Api.BLL.Services;
 
 namespace Kanban.WebApi
 {
@@ -29,6 +31,8 @@ namespace Kanban.WebApi
             services.AddTransient<KanbanDbInitializer>();
 
             //services.AddScoped(typeof(IAutoMapConverter<,>), typeof(AutoMapConverter<,>));
+            services.AddScoped<ICardService, CardService>();
+            services.AddScoped<IBoardService, BoardService>();
 
             services.AddMvc();
             

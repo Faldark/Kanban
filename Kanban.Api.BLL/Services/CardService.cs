@@ -31,7 +31,7 @@ namespace Kanban.Api.BLL.Services
             };
         }
 
-        public async Task<List<CardDTO>> GetCardsByBoardAsync(long id)
+        public async Task<IList<CardDTO>> GetCardsByBoardAsync(long id)
         {
             var cards = await _dbContext.Boards.FindAsync(id);
             return cards.Cards.Select(x => new CardDTO

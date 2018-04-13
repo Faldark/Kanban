@@ -9,7 +9,7 @@ namespace Kanban.Api.Contracts.Interfaces.Services
     public interface IBoardService
     {
         Task<BoardDTO> GetBoardByIdAsync(long id);
-        Task<List<BoardDTO>> GetBoardsAsync();
+        Task<IList<BoardDTO>> GetBoardsAsync();
         Task CreateBoardAsync(BoardDTO board);
         Task UpdateBoardAsync(BoardDTO board);
         Task DeleteBoardAsync(long id);
