@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Kanban.Api.DAL.DataContext;
+using Kanban.Api.Common.Classes;
 
 namespace Kanban.WebApi
 {
@@ -26,6 +27,9 @@ namespace Kanban.WebApi
         {
             services.AddDbContext<KanbanDbContext>();
             services.AddTransient<KanbanDbInitializer>();
+
+            services.AddScoped(typeof(IAutoMapConverter<,>), typeof(AutoMapConverter<,>));
+
             services.AddMvc();
             
 
