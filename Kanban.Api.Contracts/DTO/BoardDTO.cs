@@ -8,5 +8,6 @@ namespace Kanban.Api.Contracts.DTO
     public class BoardDTO: BaseEntity<long>
     {
         public string Title { get; set; }
+        public string Description { get; set; }
     }
 }

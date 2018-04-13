@@ -28,7 +28,7 @@ namespace Kanban.WebApi
             services.AddDbContext<KanbanDbContext>();
             services.AddTransient<KanbanDbInitializer>();
 
-            services.AddScoped(typeof(IAutoMapConverter<,>), typeof(AutoMapConverter<,>));
+            //services.AddScoped(typeof(IAutoMapConverter<,>), typeof(AutoMapConverter<,>));
 
             services.AddMvc();
             

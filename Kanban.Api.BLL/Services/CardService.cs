@@ -4,6 +4,7 @@ using Kanban.Api.Contracts.Interfaces.Services;
 using Kanban.Api.DAL.DataContext;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,20 @@ namespace Kanban.Api.BLL.Services
                 Title = card.Title,
                 StatusId = card.Status.Id
             };
+        }
+
+        public async Task<List<CardDTO>> GetCardsByBoardAsync(long id)
+        {
+            var cards = await _dbContext.Boards.FindAsync(id);
+            return cards.Cards.Select(x => new CardDTO
+            {
+                Description = x.Description,
+                Id = x.Id,
+                Order = x.Order,
+                StatusId = x.Status.Id,
+                Title = x.Title
+            }).ToList();
+            
         }
 
         public async Task CreateCardAsync(CardDTO card)
@@ -56,6 +71,14 @@ namespace Kanban.Api.BLL.Services
         {
             var entity = await _dbContext.Cards.FindAsync(id);
             _dbContext.Cards.Remove(entity);
+        }
+
+        public async Task MoveCardAsync(CardDTO card)
+        {
+            var entity = await _dbContext.Cards.FindAsync(card.Id);
+            entity.Order = card.Order;
+            _dbContext.Update(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
     }
