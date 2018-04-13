@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Kanban.Api.BLL\Kanban.Api.BLL.csproj" />
     <ProjectReference Include="..\Kanban.Api.Common\Kanban.Api.Common.csproj" />
     <ProjectReference Include="..\Kanban.Api.DAL\Kanban.Api.DAL.csproj" />
   </ItemGroup>

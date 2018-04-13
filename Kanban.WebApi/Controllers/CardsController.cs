@@ -20,7 +20,7 @@ namespace Kanban.WebApi.Controllers
         }
         // GET: api/values
         [HttpGet("board/{id}")]
-        public async Task<List<CardDTO>> GetCardsByBoardAsync(long id)
+        public async Task<IList<CardDTO>> GetCardsByBoardAsync(long id)
         {
             return await _cardService.GetCardsByBoardAsync(id);
 
@@ -28,9 +28,9 @@ namespace Kanban.WebApi.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<List<CardDTO>> GetCardByIdAsync(long id)
+        public async Task<CardDTO> GetCardByIdAsync(long id)
         {
-            return await _cardService.GetCardsByBoardAsync(id);
+            return await _cardService.GetCardByIdAsync(id);
         }
 
         // POST api/values
