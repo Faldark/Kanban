@@ -1,4 +1,5 @@
 ﻿using Kanban.Api.Contracts.DTO;
+using Kanban.Api.Contracts.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Kanban.Api.Contracts.Interfaces.Services
     public interface IBoardService
     {
         Task<BoardDTO> GetBoardByIdAsync(long id);
-        Task<IList<BoardDTO>> GetBoardsAsync();
+        Task<BoardsViewModel> GetBoardsAsync();
         Task CreateBoardAsync(BoardDTO board);
         Task UpdateBoardAsync(BoardDTO board);
         Task DeleteBoardAsync(long id);

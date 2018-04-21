@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Kanban.Api.Contracts.Interfaces.Services;
 using Kanban.Api.Contracts.DTO;
+using Kanban.Api.Contracts.ViewModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,7 +21,7 @@ namespace Kanban.WebApi.Controllers
         }
         // GET: api/values
         [HttpGet]
-        public async Task<IList<BoardDTO>> GetBoardsAsync()
+        public async Task<BoardsViewModel> GetBoardsAsync()
         {
             return await _boardService.GetBoardsAsync();
             

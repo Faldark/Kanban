@@ -1,6 +1,7 @@
 ﻿using Kanban.Api.Contracts.DTO;
 using Kanban.Api.Contracts.Entities;
 using Kanban.Api.Contracts.Interfaces.Services;
+using Kanban.Api.Contracts.ViewModels;
 using Kanban.Api.DAL.DataContext;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,15 +30,18 @@ namespace Kanban.Api.BLL.Services
             };
         }
 
-        public async Task<IList<BoardDTO>> GetBoardsAsync()
+        public async Task<BoardsViewModel> GetBoardsAsync()
         {
             var boards = await _dbContext.Boards.ToListAsync();
-            return boards.Select(x => new BoardDTO
-            {
-                Id = x.Id,
-                Title = x.Title,
-                Description = x.Description
-            }).ToList();
+
+            var result = new BoardsViewModel() { Boards = boards.Select(x => new BoardDTO
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Description = x.Description
+                }).ToList()
+            };
+            return result;
 
         }
 
