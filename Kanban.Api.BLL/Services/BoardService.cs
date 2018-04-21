@@ -29,7 +29,7 @@ namespace Kanban.Api.BLL.Services
             };
         }
 
-        public async Task<List<BoardDTO>> GetBoardsAsync()
+        public async Task<IList<BoardDTO>> GetBoardsAsync()
         {
             var boards = await _dbContext.Boards.ToListAsync();
             return boards.Select(x => new BoardDTO
