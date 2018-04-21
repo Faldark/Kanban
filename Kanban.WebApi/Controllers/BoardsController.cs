@@ -20,7 +20,7 @@ namespace Kanban.WebApi.Controllers
         }
         // GET: api/values
         [HttpGet]
-        public async Task<IList<BoardDTO>> GetBoardAsync()
+        public async Task<IList<BoardDTO>> GetBoardsAsync()
         {
             return await _boardService.GetBoardsAsync();
             

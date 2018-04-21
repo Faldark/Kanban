@@ -33,8 +33,8 @@ namespace Kanban.WebApi
             //services.AddScoped(typeof(IAutoMapConverter<,>), typeof(AutoMapConverter<,>));
             services.AddScoped<ICardService, CardService>();
             services.AddScoped<IBoardService, BoardService>();
-
             services.AddMvc();
+            services.AddCors();
             
 
             
@@ -48,6 +48,9 @@ namespace Kanban.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
             app.UseMvc();
 

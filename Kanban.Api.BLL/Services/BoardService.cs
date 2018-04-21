@@ -35,7 +35,8 @@ namespace Kanban.Api.BLL.Services
             return boards.Select(x => new BoardDTO
             {
                 Id = x.Id,
-                Title = x.Title
+                Title = x.Title,
+                Description = x.Description
             }).ToList();
 
         }
