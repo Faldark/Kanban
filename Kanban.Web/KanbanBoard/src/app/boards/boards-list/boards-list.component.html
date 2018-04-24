@@ -1,18 +1,18 @@
 
-  <!-- <div *ngFor='let board of boardsList?.boards'>
-    <div>
-      {{board.title}}
-    </div>
-  </div> -->
 
-
-  <div *ngFor='let board of boardsList?.boards'  class="col-lg-4 " >
+  <div *ngFor='let board of boardsList?.boards'  class=" col-lg-2" >
     
-    <div [routerLink]="['/boards', board.id]" class="ibox float-e-margins">
-      <div class="ibox-title">{{board.title}}</div>
-      <div class="ibox-content">{{board.description}} </div>
+    <div [routerLink]="['/boards', board.id]" >
+      <div class="">
+        
+        <h2>
+          {{board.title}}
+        </h2>
+        <div class="">
+          {{board.description}} 
+        </div>
+      </div>
+    
     </div>
   </div>
-  <!-- <div *ngFor='let item of testArray'>
-  <div>{{item.title}}</div>
-  </div> -->
+  
