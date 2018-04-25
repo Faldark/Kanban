@@ -15,9 +15,11 @@ namespace Kanban.WebApi.Controllers
     public class BoardsController : Controller
     {
         private IBoardService _boardService;
-        public BoardsController(IBoardService boardService)
+        private ICardService _cardService;
+        public BoardsController(IBoardService boardService, ICardService cardService)
         {
             _boardService = boardService;
+            _cardService = cardService;
         }
         // GET: api/values
         [HttpGet]
@@ -25,6 +27,22 @@ namespace Kanban.WebApi.Controllers
         {
             return await _boardService.GetBoardsAsync();
             
+        }
+
+        //Get api/values/5/statuses
+        [HttpGet("{id}/statuses")]
+        public async Task<StatusesViewModel> GetStatusesByBoardAsync()
+        {
+            return await _boardService.GetStatusesByBoardAsync();
+
+        }
+
+        // GET: api/values/5/cards
+        [HttpGet("{id}/cards")]
+        public async Task<CardsViewModel> GetCardsByBoardAsync(long id)
+        {
+            return await _cardService.GetCardsByBoardAsync(id);
+
         }
 
         // GET api/values/5

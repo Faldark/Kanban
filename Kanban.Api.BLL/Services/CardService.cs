@@ -1,6 +1,7 @@
 ﻿using Kanban.Api.Contracts.DTO;
 using Kanban.Api.Contracts.Entities;
 using Kanban.Api.Contracts.Interfaces.Services;
+using Kanban.Api.Contracts.ViewModels;
 using Kanban.Api.DAL.DataContext;
 using System;
 using System.Collections.Generic;
@@ -31,18 +32,20 @@ namespace Kanban.Api.BLL.Services
             };
         }
 
-        public async Task<IList<CardDTO>> GetCardsByBoardAsync(long id)
+        public async Task<CardsViewModel> GetCardsByBoardAsync(long id)
         {
-            var cards = await _dbContext.Boards.FindAsync(id);
-            return cards.Cards.Select(x => new CardDTO
+            var result = new CardsViewModel()
             {
-                Description = x.Description,
-                Id = x.Id,
-                Order = x.Order,
-                StatusId = x.Status.Id,
-                Title = x.Title
-            }).ToList();
-            
+                Cards = await _dbContext.Cards.Where(x => x.Board.Id == id).Select(x => new CardDTO
+                {
+                    Description = x.Description,
+                    Id = x.Id,
+                    Order = x.Order,
+                    StatusId = x.Status.Id,
+                    Title = x.Title
+                }).ToAsyncEnumerable().ToList()
+            };
+            return result;
         }
 
         public async Task CreateCardAsync(CardDTO card)

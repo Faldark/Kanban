@@ -6,13 +6,17 @@ import { AppRoutingModule } from '../app-routing.module';
 import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardsService } from '../services/boards.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BoardKanbanComponent } from './board-kanban/board-kanban.component';
+import { CardKanbanComponent } from './board-kanban/card-kanban/card-kanban.component';
+import { CardsService } from '../services/cards.service';
 @NgModule({
   imports: [
     CommonModule,
     BoardsRoutingModule,
     NgbModule
   ],
-  declarations: [BoardsComponent, BoardsListComponent],
-  providers: [BoardsService]
+  declarations: [BoardsComponent, BoardsListComponent, BoardKanbanComponent, CardKanbanComponent],
+  providers: [BoardsService,
+  CardsService]
 })
 export class BoardsModule { }

@@ -26,7 +26,8 @@ namespace Kanban.Api.BLL.Services
             return new BoardDTO
             {
                 Id = board.Id,
-                Title = board.Title
+                Title = board.Title,
+                Description = board.Description
             };
         }
 
@@ -44,6 +45,23 @@ namespace Kanban.Api.BLL.Services
             return result;
 
         }
+
+        public async Task<StatusesViewModel> GetStatusesByBoardAsync()
+        {
+            var statuses = await _dbContext.Statuses.ToListAsync();
+
+            var result = new StatusesViewModel()
+            {
+                Statuses = statuses.Select(x => new StatusDTO
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList()
+            };
+            return result;
+
+        }
+
 
         public async Task CreateBoardAsync(BoardDTO board)
         {

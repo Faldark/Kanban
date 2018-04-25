@@ -18,14 +18,7 @@ namespace Kanban.WebApi.Controllers
         {
             _cardService = cardService;
         }
-        // GET: api/values
-        [HttpGet("board/{id}")]
-        public async Task<IList<CardDTO>> GetCardsByBoardAsync(long id)
-        {
-            return await _cardService.GetCardsByBoardAsync(id);
-
-        }
-
+        
         // GET api/values/5
         [HttpGet("{id}")]
         public async Task<CardDTO> GetCardByIdAsync(long id)

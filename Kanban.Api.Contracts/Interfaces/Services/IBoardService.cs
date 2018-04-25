@@ -11,6 +11,7 @@ namespace Kanban.Api.Contracts.Interfaces.Services
     {
         Task<BoardDTO> GetBoardByIdAsync(long id);
         Task<BoardsViewModel> GetBoardsAsync();
+        Task<StatusesViewModel> GetStatusesByBoardAsync();
         Task CreateBoardAsync(BoardDTO board);
         Task UpdateBoardAsync(BoardDTO board);
         Task DeleteBoardAsync(long id);

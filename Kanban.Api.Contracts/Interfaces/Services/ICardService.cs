@@ -1,4 +1,5 @@
 ﻿using Kanban.Api.Contracts.DTO;
+using Kanban.Api.Contracts.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Kanban.Api.Contracts.Interfaces.Services
     public interface ICardService
     {
         Task<CardDTO> GetCardByIdAsync(long id);
-        Task<IList<CardDTO>> GetCardsByBoardAsync(long id);
+        Task<CardsViewModel> GetCardsByBoardAsync(long id);
         Task CreateCardAsync(CardDTO card);
         Task UpdateCardAsync(CardDTO card);
         Task DeleteCardAsync(long id);
