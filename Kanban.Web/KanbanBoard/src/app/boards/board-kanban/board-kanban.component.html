@@ -1,31 +1,22 @@
+
+
 <h1 style="text-align: center;">
     {{board.title}}
   </h1>
 
 <div class="row">
   
-  <div *ngFor='let status of statusesList?.statuses' class=" col-sm-3" style=" padding-left: 50px;" >
-    <!-- {{board.id}}
-    {{board.title}}
-    {{board.description}} -->
-    <div>
-    <!-- <div class=" col-lg-4"> -->
+  <div  *ngFor='let status of statusesList?.statuses' class=" col-sm-3" style=" padding-left: 50px; background-color:cadetblue;"   >
+    <div droppable="true" (onDrop)="moveCard($event, status.id)">
       {{status.name}}
 
-      <!-- <div *ngFor='let card of cardsList?.cards'>
-        {{card.title}}
-        {{card.description}}
-
-      </div> -->
-
-      <!-- <app-card-kanban *ngFor="let card of cardsList?.cards" [card]="card"></app-card-kanban> -->
-
-      <div *ngFor="let card of cardsList?.cards">
+      
+      <div  *ngFor="let card of cardsList?.cards"  draggable="true" [dragData]="card" (onDragStart)="test($event)">
         <div *ngIf="card.statusId == status.id">
-          {{card.description}}
-          {{card.statusId}}
+            <app-card-kanban  [card]="card"></app-card-kanban>
         </div>
       </div>
+      
     </div>
     
   </div>

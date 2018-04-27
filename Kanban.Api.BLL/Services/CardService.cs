@@ -3,6 +3,7 @@ using Kanban.Api.Contracts.Entities;
 using Kanban.Api.Contracts.Interfaces.Services;
 using Kanban.Api.Contracts.ViewModels;
 using Kanban.Api.DAL.DataContext;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,8 +79,9 @@ namespace Kanban.Api.BLL.Services
 
         public async Task MoveCardAsync(CardDTO card)
         {
-            var entity = await _dbContext.Cards.FindAsync(card.Id);
+            var entity = await _dbContext.Cards.Where(s => s.Id == card.Id).SingleOrDefaultAsync();
             entity.Order = card.Order;
+            entity.StatusId = card.StatusId;
             _dbContext.Update(entity);
             await _dbContext.SaveChangesAsync();
         }

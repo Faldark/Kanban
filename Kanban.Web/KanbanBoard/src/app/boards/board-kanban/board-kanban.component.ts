@@ -4,6 +4,8 @@ import { Board } from '../../entities/board';
 import { ActivatedRoute } from '@angular/router';
 import { Cards } from '../../entities/cards';
 import { Statuses } from '../../entities/statuses';
+import { CardsService } from '../../services/cards.service';
+import { Card } from '../../entities/card';
 
 @Component({
   selector: 'app-board-kanban',
@@ -12,12 +14,11 @@ import { Statuses } from '../../entities/statuses';
 })
 export class BoardKanbanComponent implements OnInit {
 
-  constructor(private _boardsService: BoardsService, private _route: ActivatedRoute) { }
+  constructor(private _boardsService: BoardsService, private _route: ActivatedRoute, private _cardsService : CardsService) { }
 
 
   board : Board = new Board;
   statusesList: Statuses = new Statuses;
-  // statuses : string[];
   cardsList: Cards = new Cards;
   
   ngOnInit() {
@@ -46,4 +47,14 @@ export class BoardKanbanComponent implements OnInit {
       statuses => this.statusesList = statuses
     );
   }
+
+  moveCard(e: any, id:number) {
+    e.dragData.statusId = id;
+    this._cardsService.moveCard(e.dragData.id, e.dragData).subscribe(
+      responce => {console.log(responce)
+      });
+  }
+  test(e: any) {
+    console.log("OnDragStartTest");
+  }_
 }

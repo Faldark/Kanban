@@ -11,6 +11,9 @@ namespace Kanban.Api.DAL.DataContext
         public DbSet<Card> Cards { get; set; }
         public DbSet<Board> Boards { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        //public KanbanDbContext() {
+        //    this.Configuration.LazyLoadingEnabled = false;
+        //}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

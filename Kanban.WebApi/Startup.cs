@@ -50,7 +50,8 @@ namespace Kanban.WebApi
             }
 
             app.UseCors(builder =>
-                builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
+                builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()
+                );
 
             app.UseMvc();
 

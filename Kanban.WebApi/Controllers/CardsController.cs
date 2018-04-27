@@ -49,9 +49,19 @@ namespace Kanban.WebApi.Controllers
 
         // Move api/values/5/move
         [HttpPut("{id}/move")]
-        public async Task MoveCardAsync(long id, [FromBody]CardDTO card)
+        public async Task<IActionResult> MoveCardAsync(long id, [FromBody]CardDTO card)
         {
-            await _cardService.MoveCardAsync(card);
+            try
+            {
+                await _cardService.MoveCardAsync(card);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest();
+            }
+
+            return Ok();
         }
 
 
