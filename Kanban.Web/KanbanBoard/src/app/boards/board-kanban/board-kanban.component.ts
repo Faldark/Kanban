@@ -26,8 +26,6 @@ export class BoardKanbanComponent implements OnInit {
     this.getBoardById(id);
     this.getCardsByBoardId(id);
     this.getStatusesByBoard(id);
-    // var statuses = Object.keys(Statuses);
-    // this.statuses = statuses.slice(statuses.length/2);
   }
 
   getBoardById(id: number) : void {

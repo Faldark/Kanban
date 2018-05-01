@@ -79,7 +79,7 @@ namespace Kanban.Api.BLL.Services
 
         public async Task MoveCardAsync(CardDTO card)
         {
-            var entity = await _dbContext.Cards.Where(s => s.Id == card.Id).SingleOrDefaultAsync();
+            var entity = await _dbContext.Cards.FindAsync(card.Id);
             entity.Order = card.Order;
             entity.StatusId = card.StatusId;
             _dbContext.Update(entity);
