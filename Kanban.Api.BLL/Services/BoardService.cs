@@ -88,6 +88,7 @@ namespace Kanban.Api.BLL.Services
         {
             var entity = await _dbContext.Boards.FindAsync(id);
             _dbContext.Boards.Remove(entity);
+            await _dbContext.SaveChangesAsync();
         }
         
     }

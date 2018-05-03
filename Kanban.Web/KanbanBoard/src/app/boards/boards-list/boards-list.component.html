@@ -6,7 +6,11 @@
            <ng-template ngbPanelContent >
              {{board.description}}
            <hr>
-             <button [routerLink]="['/boards', board.id]" class=" btn-primary pull-right m-l-xl ">Proceed to board details</button>
+           <div class="row ">
+              <button [routerLink]="['/boards', board.id]" class=" btn-primary pull-right m-l-xl col-sm-6">Proceed to board details</button>
+              <button  class=" btn-primary pull-right m-l-xl col-sm-6" (click)="deleteBoard(board.id)">Remove board</button>
+           </div>
+             
            </ng-template>
          </ngb-panel>
         </ngb-accordion>

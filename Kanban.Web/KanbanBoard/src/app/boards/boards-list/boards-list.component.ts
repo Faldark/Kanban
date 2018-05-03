@@ -32,7 +32,10 @@ export class BoardsListComponent implements OnInit {
    
     
   }
-
-  
+  deleteBoard(id: number) : void {
+    this._boardsService.deleteBoard(id).subscribe(
+      () => this.ngOnInit()
+    );
+  }
 
 }

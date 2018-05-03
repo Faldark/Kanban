@@ -30,5 +30,8 @@ export class BoardsService {
   addBoard(board: Board) :Observable<any> {
     return this._http.post<Board>(this._boardsUrl, board)
   }
+  deleteBoard(id:number) :Observable<any> {
+    return this._http.delete<Board>(this._boardsUrl + "/" +  id)
+  }
 
 }
