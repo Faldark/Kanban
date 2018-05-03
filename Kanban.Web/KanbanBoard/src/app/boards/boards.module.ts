@@ -10,15 +10,20 @@ import { BoardKanbanComponent } from './board-kanban/board-kanban.component';
 import { CardKanbanComponent } from './board-kanban/card-kanban/card-kanban.component';
 import { CardsService } from '../services/cards.service';
 import { NgDragDropModule } from 'ng-drag-drop';
+import { BoardAddComponent } from './boards-list/board-add/board-add.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
     BoardsRoutingModule,
     NgbModule,
-    NgDragDropModule.forRoot()
+    NgDragDropModule.forRoot(),
+    FormsModule
   ],
-  declarations: [BoardsComponent, BoardsListComponent, BoardKanbanComponent, CardKanbanComponent],
+  declarations: [BoardsComponent, BoardsListComponent, BoardKanbanComponent, CardKanbanComponent, BoardAddComponent],
   providers: [BoardsService,
-  CardsService]
+  CardsService],
+  bootstrap: [BoardAddComponent]
+
 })
 export class BoardsModule { }

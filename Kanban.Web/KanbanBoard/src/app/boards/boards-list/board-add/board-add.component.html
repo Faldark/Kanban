@@ -1,0 +1,33 @@
+<div class="modal-header" >
+  <h4 class="modal-title" >Add new Board</h4>
+</div>
+<div class="modal-body">
+  <form action="post" class="form-horizontal" (ngSubmit)="onSubmit()">
+    <div class="row form-group">
+      <label class="col-sm-3 control-label " for="name">Title:</label>
+      <div class="col-sm-6 ">
+        <input  id="title" type="text" class="form-control"  [(ngModel)]="board.title" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="col-sm-3 control-label " for="name">Description:</label>
+      <div class="col-sm-6 ">
+        <input  id="description" type="text" class="form-control"  [(ngModel)]="board.description" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+        
+
+    <div class="row">
+        <div class="col-sm-7">
+            <button class='btn btn-primary ' (click)="activeModal.close('Close click')" >Close</button>
+        </div>
+      
+        <div >
+            <button class="btn btn-primary  " type="submit">Submit</button>
+        </div>
+         
+      </div>
+
+  </form>
+
+</div>

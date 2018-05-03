@@ -27,6 +27,8 @@ export class BoardsService {
     return this._http.get<Cards>(this._boardsUrl + "/" + id + "/cards")
   }
 
-  
+  addBoard(board: Board) :Observable<any> {
+    return this._http.post<Board>(this._boardsUrl, board)
+  }
 
 }
