@@ -12,7 +12,7 @@ import { BoardAddComponent } from './board-add/board-add.component';
 })
 export class BoardsListComponent implements OnInit {
   closeResult: boolean;
-  constructor(private _boardsService: BoardsService, private modalService: NgbModal) { }
+  constructor(private _boardsService: BoardsService, private _modalService: NgbModal) { }
 
   boardsList: Boards = new Boards;
 
@@ -21,7 +21,7 @@ export class BoardsListComponent implements OnInit {
   
   }
   open() {
-    const modalRef = this.modalService.open(BoardAddComponent).result.then((result) => {this.closeResult= result == 'OK' ? true: false; if(this.closeResult) {this.ngOnInit()} });
+    const modalRef = this._modalService.open(BoardAddComponent).result.then((result) => {this.closeResult = result == 'OK' ? true: false; if(this.closeResult) {this.ngOnInit()} });
     
   }
 

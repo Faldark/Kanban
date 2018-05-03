@@ -11,5 +11,6 @@ namespace Kanban.Api.Contracts.DTO
         public string Description { get; set; }
         public int Order { get; set; }
         public long StatusId { get; set; }
+        public long BoardId { get; set; }
     }
 }

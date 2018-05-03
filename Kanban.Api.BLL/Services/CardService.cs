@@ -54,11 +54,16 @@ namespace Kanban.Api.BLL.Services
             var status = await _dbContext.Statuses.FindAsync(card.StatusId);
             var entity = new Card
             {
+                
                 Description = card.Description,
                 Order = card.Order,
-                Title = card.Title
+                Title = card.Title,
+                BoardId = card.BoardId,
+                StatusId = status.Id
 
             };
+            entity.Board = null;
+            entity.Status = null;
             await _dbContext.Cards.AddAsync(entity);
             await _dbContext.SaveChangesAsync();
         }

@@ -6,6 +6,8 @@ import { Cards } from '../../entities/cards';
 import { Statuses } from '../../entities/statuses';
 import { CardsService } from '../../services/cards.service';
 import { Card } from '../../entities/card';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CardAddComponent } from './card-kanban/card-add/card-add.component';
 
 @Component({
   selector: 'app-board-kanban',
@@ -13,16 +15,18 @@ import { Card } from '../../entities/card';
   styleUrls: ['./board-kanban.component.css']
 })
 export class BoardKanbanComponent implements OnInit {
-
-  constructor(private _boardsService: BoardsService, private _route: ActivatedRoute, private _cardsService : CardsService) { }
+  closeResult : boolean;
+  constructor(private _boardsService: BoardsService, private _route: ActivatedRoute, private _cardsService : CardsService, private _modalService: NgbModal) { }
 
 
   board : Board = new Board;
   statusesList: Statuses = new Statuses;
   cardsList: Cards = new Cards;
+  boardId : number;
   
   ngOnInit() {
     const id = +this._route.snapshot.paramMap.get('id');
+    this.boardId = id;
     this.getBoardById(id);
     this.getCardsByBoardId(id);
     this.getStatusesByBoard(id);
@@ -52,7 +56,13 @@ export class BoardKanbanComponent implements OnInit {
       responce => {console.log(responce)
       });
   }
-  test(e: any) {
-    console.log("OnDragStartTest");
-  }_
+
+  openCardModal() {
+    const ModalRef = this._modalService.open(CardAddComponent);
+    ModalRef.componentInstance.card.boardId = this.boardId;
+    ModalRef.result.then((result) => {this.closeResult = result == 'OK' ? true: false; if(this.closeResult) {this.ngOnInit()} });
+
+    
+  }
+  
 }

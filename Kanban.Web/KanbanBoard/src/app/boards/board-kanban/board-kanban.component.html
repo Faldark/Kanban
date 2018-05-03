@@ -1,9 +1,14 @@
 
 
-<h1 style="text-align: center;">
+    
+  <h1 style="text-align: center;">
     {{board.title}}
   </h1>
 
+<div class="col-sm-6" style="padding: 2px">
+    <button  class="btn btn-primary"   (click)="openCardModal()">Add new card</button>
+</div>
+  
 <div class="row">
   
   <div  *ngFor='let status of statusesList?.statuses' class=" col-sm-3"   >
@@ -23,7 +28,5 @@
 
 </div>
 
-
-<!-- padding-left: 50px; padding-top: 50px; -->
 
 

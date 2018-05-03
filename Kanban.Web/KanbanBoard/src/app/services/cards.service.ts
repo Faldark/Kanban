@@ -17,4 +17,7 @@ export class CardsService {
     return this._http.put(this._cardsUrl + "/" + id + "/move", card, { headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
     responseType: 'text'});
   }
+  addCard(card: Card) :Observable<any> {
+    return this._http.post(this._cardsUrl, card);
+  }
 }

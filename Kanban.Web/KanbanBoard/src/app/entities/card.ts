@@ -4,6 +4,7 @@ export class Card {
     description: string;
     order: string;
     statusId: number;
+    boardId: number;
 
 
 }
