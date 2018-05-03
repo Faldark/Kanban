@@ -9,13 +9,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BoardKanbanComponent } from './board-kanban/board-kanban.component';
 import { CardKanbanComponent } from './board-kanban/card-kanban/card-kanban.component';
 import { CardsService } from '../services/cards.service';
-import { Ng2DragDropModule} from "ng2-drag-drop";
+import { NgDragDropModule } from 'ng-drag-drop';
 @NgModule({
   imports: [
     CommonModule,
     BoardsRoutingModule,
     NgbModule,
-    Ng2DragDropModule.forRoot()
+    NgDragDropModule.forRoot()
   ],
   declarations: [BoardsComponent, BoardsListComponent, BoardKanbanComponent, CardKanbanComponent],
   providers: [BoardsService,

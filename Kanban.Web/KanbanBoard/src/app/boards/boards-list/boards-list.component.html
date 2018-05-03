@@ -1,18 +1,11 @@
-
-
-  <div *ngFor='let board of boardsList?.boards'  class=" col-lg-2" >
-    
-    <div [routerLink]="['/boards', board.id]" >
-      <div class="">
-        
-        <h2>
-          {{board.title}}
-        </h2>
-        <div>
-          {{board.description}} 
-        </div>
-      </div>
-    
-    </div>
-  </div>
-  
+<div *ngFor='let board of boardsList?.boards' class=" col-sm-4" >
+ <ngb-accordion  >
+  <ngb-panel title="{{board.title}}">
+    <ng-template ngbPanelContent >
+      {{board.description}}
+    <hr>
+      <button [routerLink]="['/boards', board.id]" class=" btn-primary pull-right m-l-xl ">Proceed to board details</button>
+    </ng-template>
+  </ngb-panel>
+ </ngb-accordion>
+</div>
