@@ -20,7 +20,6 @@ export class CardAddComponent implements OnInit {
 
   onSubmit() {
     this.card.statusId = 1;
-    
     this._cardService.addCard(this.card).subscribe(() => this.activeModal.close('OK') );
   }
 

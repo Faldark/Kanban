@@ -57,6 +57,12 @@ export class BoardKanbanComponent implements OnInit {
       });
   }
 
+  onDeleteDrop(e:any) {
+    this._cardsService.deleteCard(e.dragData.id).subscribe(
+      () => this.getCardsByBoardId(this.boardId)
+    );
+  }
+
   openCardModal() {
     const ModalRef = this._modalService.open(CardAddComponent);
     ModalRef.componentInstance.card.boardId = this.boardId;
@@ -64,5 +70,7 @@ export class BoardKanbanComponent implements OnInit {
 
     
   }
+
+  
   
 }

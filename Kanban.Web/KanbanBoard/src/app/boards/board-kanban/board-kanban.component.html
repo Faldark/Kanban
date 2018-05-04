@@ -4,10 +4,26 @@
   <h1 style="text-align: center;">
     {{board.title}}
   </h1>
+  <div class="col-sm-2 offset-5">
+  <div class="card card-inverse card-primary mb-3 text-center" droppable="true" [dragHintClass]="'drag-hint-scale'" [dragOverClass]="'bg-danger'"
+  (onDrop)="onDeleteDrop($event)">
+ <div class="card-block">
+     <blockquote class="card-blockquote">
+         <h4 class="card-title"><i class="fa fa-trash" aria-hidden="true"></i> Drop to Delete</h4>
+         <p class="card-text">Drop Items here to delete</p>
+     </blockquote>
+ </div>
+</div>
+</div>
+
 
 <div class="col-sm-6" style="padding: 2px">
     <button  class="btn btn-primary"   (click)="openCardModal()">Add new card</button>
 </div>
+
+
+
+  
   
 <div class="row">
   
@@ -16,7 +32,7 @@
       {{status.name}}
     </div>
       
-      <div  *ngFor="let card of cardsList?.cards"  draggable="true" [dragData]="card" (onDragStart)="test($event)">
+      <div  *ngFor="let card of cardsList?.cards"  draggable="true" [dragData]="card" >
         <div *ngIf="card.statusId == status.id">
             <app-card-kanban  [card]="card" style="padding: 1px; text-align: center;"></app-card-kanban>
         </div>

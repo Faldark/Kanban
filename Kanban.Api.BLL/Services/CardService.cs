@@ -80,6 +80,7 @@ namespace Kanban.Api.BLL.Services
         {
             var entity = await _dbContext.Cards.FindAsync(id);
             _dbContext.Cards.Remove(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task MoveCardAsync(CardDTO card)

@@ -20,4 +20,7 @@ export class CardsService {
   addCard(card: Card) :Observable<any> {
     return this._http.post(this._cardsUrl, card);
   }
+  deleteCard(id:number) :Observable<any> {
+    return this._http.delete(this._cardsUrl + "/" + id);
+  }
 }
